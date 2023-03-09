@@ -1,0 +1,36 @@
+// Project.stencil
+
+import ProjectDescription
+
+let project = Project(
+    name: "{{ name }}",
+    targets: [
+        Target(
+            name: "{{ name }}",
+            platform: .iOS,
+            product: .app,
+            bundleId: "com.jake.{{ name }}",
+            infoPlist: .extendingDefault(
+                with: [
+                    "UILaunchScreen": [:]
+                ]
+            ),
+            sources: [
+                "Sources/"
+            ]
+        ),
+        Target(
+            name: "{{ name }}Tests",
+            platform: .iOS,
+            product: .unitTests,
+            bundleId: "com.jake.{{ name }}Tests",
+            infoPlist: .default,
+            sources: [
+                "Tests/"
+            ],
+            dependencies: [
+                .target(name: "{{ name }}")
+            ]
+        )
+    ]
+)
