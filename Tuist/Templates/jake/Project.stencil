@@ -1,19 +1,22 @@
+// Project.stencil
+
 import ProjectDescription
 
 let project = Project(
-    name: "MyApp",
+    name: "{{ name }}",
     targets: [
         Target(
-            name: "MyApp",
+            name: "{{ name }}",
             platform: .iOS,
             product: .app,
-            bundleId: "com.jake.MyApp",
+            bundleId: "com.jake.{{ name }}",
             infoPlist: .extendingDefault(with: [
                 "CFBundleShortVersionString": "1.0",
                 "CFBundleVersion": "1",
                 "UILaunchStoryboardName": "LaunchScreen"
             ]),
             dependencies: [   
+                
             ]
         )
     ]
